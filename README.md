@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/p9VNMUI0)
 # Trabajo integrador de segundo semestre
 El objetivo de este trabajo integrador es proporcionar a los estudiantes de segundo nivel de desarrollo de software una experiencia práctica que combine los conocimientos adquiridos en los cursos de Programación II y Bases de Datos I. A través de este proyecto, los estudiantes desarrollarán una aplicación web utilizando Django, HTML, CSS y JavaScript, aplicando principios de la programación orientada a objetos y el modelo vista-controlador. Además, implementarán una base de datos relacional en PostgreSQL, diseñando el diagrama lógico, creando las tablas con sus respectivas relaciones y validando la integridad de los datos mediante restricciones y llaves.
 
