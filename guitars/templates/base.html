@@ -15,11 +15,11 @@
 <body>
     <div class="container" href="{% static "bootstrap.min.css" %}">
         <div class="bg-primary text-white p-4 text-center">
-            <img src="{% static "logo.png" %}" alt="logo.png">
+            <img src="{% static "logo.png" %}" alt="logo.png" height="350px">
             <p>INICIO BARRA DE NAVEGACION</p>
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,13 +30,19 @@
                       <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url "guitars:add_client" %}">Clientes</a>
+                    <li class="nav-item dropdown active">
+                      <a class="nav-link dropdown-toggle" href="{% url "guitars:client_list" %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Clientes
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url "guitars:client_list" %}">Listado de Clientes</a></li>
+                        <li><a class="dropdown-item" href="{% url "guitars:add_client" %}">Agregar Clientes</a></li>
+                      </ul>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                       <a class="nav-link" href="#">Ventas</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown active">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Productos
                       </a>

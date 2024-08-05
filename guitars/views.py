@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
-
+from .models import Client
 from guitars.forms import ClientForm
 
 
@@ -18,6 +18,13 @@ def index(request):
 class CustomLoginView(LoginView):
     template_name = 'login.html'
     
+    
+#Vista para desplegar los clientes
+
+def client_list(request):
+    clients = Client.objects.all()
+    return render(request, 'client_list.html', {'clients':clients})
+
     
 @login_required
 def add_client(request):

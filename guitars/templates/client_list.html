@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% comment %} Esta vista sirve para desplegar el listado de clientes {% endcomment %}
+
+{% block title %}Lista de Clientes{% endblock title %}
+
+{% block content %}
+    <h1>Lista de Clientes</h1>
+    <div class="card-group">
+        {% for client in clients %}
+
+
+            <ul class="list-group">
+                <li class="list-group-item">Identificacion: {{ client.cedula }}</li>
+                <li class="list-group-item">Cliente: {{ client.name }}</li>
+                <li class="list-group-item">Email: {{ client.email }}</li>
+                <li class="list-group-item">Direccion: {{ client.address }}</li>
+            </ul>
+        {% endfor %}
+    </div>
+
+
+
+
+{% endblock content %}
