@@ -2,50 +2,69 @@
 <html lang="en">
 <head>
     {% load static %}
-    <title>{% block title %}{% endblock  %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
     <link rel="stylesheet" href="{% static "bootstrap.min.css" %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-rbsA4uWz4qA1y9xFiDhwNTnqok3vyykqcf51dnZm+zKP9ENb/jhdzjHgQ5A6dcrj" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="{% static 'css/custom_styles.css' %}">
 
     <style>
-      body, html {
-          margin: 0;
-          padding: 0;
-          width: 100%;
-          height: 100%;
-          justify-content:center;
-          align-items: center;
-      }
-      
-      .container {
-          padding: 0;
-          margin: 0;
-          width: 100%;
-          max-width: 1500px;
-      }
-  </style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(13, 13, 15);
+            color: black;
+        }
+        
+        .container {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            max-width: 1500px;
+        }
 
+        /* Aumenta el tamaño de los botones de navegación */
+        .navbar-nav .nav-link {
+            font-size: 1.2rem; /* Aumenta el tamaño del texto */
+            padding: 0.75rem 1.25rem; /* Ajusta el padding para aumentar el tamaño del botón */
+        }
+
+        .navbar-toggler {
+            font-size: 1.5rem; /* Aumenta el tamaño del ícono de toggle */
+            padding: 0.75rem 1.5rem; /* Ajusta el padding del botón de toggle */
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem; /* Aumenta el tamaño del texto de la marca */
+        }
+
+        /* Centra verticalmente los elementos de la barra de navegación */
+        .navbar {
+            padding-top: 0.5rem; /* Ajusta el padding superior para centrar verticalmente */
+            padding-bottom: 0.5rem; /* Ajusta el padding inferior para centrar verticalmente */
+        }
+
+        /* Opcional: Ajusta el espacio entre los elementos de la barra de navegación */
+        .navbar-nav {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
 <body>
-    <div class="container" href="{% static "bootstrap.min.css" %}">
-        <div >
-          
-            {% include "header.html" %}
-
-            {% comment %} Barra de navegacion {% endcomment %}
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div>
+            {% comment %} Barra de navegación {% endcomment %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
                 <a class="navbar-brand" href="#"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul class="navbar-nav">
-
                     <li class="nav-item active">
                       <a class="nav-link" href="{% url "guitars:index" %}">Inicio <span class="sr-only">(current)</span></a>
                     </li>
@@ -84,10 +103,10 @@
                     {% endif %}
                   </ul>
                 </div>
-              </nav>
+            </nav>
+            {% include "header.html" %}
         </div>
         {% block content %}  {% endblock content %}
     </div>
-    
 </body>
 </html>

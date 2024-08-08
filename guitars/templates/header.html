@@ -1,7 +1,3 @@
-
-<!-- Este codigo es el "header" es decir la foto del chico tocando la guitarra  -->
-
-
 <header>
     <script>
         // Initialization for ES Users
@@ -14,7 +10,7 @@
         #intro-example {
             height: 400px;
         }
-  
+
         /* Height for devices larger than 992px */
         @media (min-width: 992px) {
             #intro-example {
@@ -26,27 +22,35 @@
         .mask {
             background-color: rgba(0, 0, 0, 0.7); /* Change the color and transparency as needed */
         }
+
+        /* Navbar style */
+        .navbar {
+            background-color: rgb(13, 13, 15) !important; /* Fondo negro para la barra de navegación */
+        }
+
+        .navbar .nav-link, .navbar .navbar-brand {
+            color: #fff !important; /* Texto blanco en los enlaces y marca */
+        }
+
+        .navbar .dropdown-menu {
+            background-color: rgb(13, 13, 15); /* Fondo negro para el menú desplegable */
+        }
+
+        .navbar .dropdown-item {
+            color: #fff !important; /* Texto blanco en los elementos del menú desplegable */
+        }
+
+        .navbar .dropdown-item:hover {
+            background-color: #333; /* Fondo oscuro en hover para el menú desplegable */
+        }
+
+        /* Add margin-top to header */
+        header {
+            margin-top: 10px; /* Adjust this value to your preference */
+        }
     </style>
-  
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-            <button
-                data-mdb-collapse-init
-                class="navbar-toggler"
-                type="button"
-                data-mdb-target="#navbarExample01"
-                aria-controls="navbarExample01"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-    <!-- Navbar -->
-  
-    <!-- Background image -->
+
+
     <div
         id="intro-example"
         class="p-5 text-center bg-image"
@@ -56,7 +60,7 @@
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-white">
                     <h1 class="mb-3">Tienda de Guitarras</h1>
-                    <h5 class="mb-4">Aqui podras manejar el inventario de la tienda de guitarras</h5>
+                    <h5 class="mb-4">Aquí podrás manejar el inventario de la tienda de guitarras</h5>
                     <a
                         data-mdb-ripple-init
                         class="btn btn-outline-light btn-lg m-2"

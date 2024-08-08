@@ -13,7 +13,7 @@
   align-items: center;
   flex-wrap: wrap;
   min-height: 100vh;
-  background: rgb(13, 13, 15);
+  background: rgba(238, 237, 237, 0.521);
 }
 
 .custom-container .custom-card-container {
@@ -87,7 +87,7 @@
   left: 0;
   width: 50%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(33, 25, 146, 0.03);
 }
 
 .custom-container .custom-card .custom-box .custom-content {
@@ -136,4 +136,12 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
   background: #fff;
   color: #000;
+}
+
+
+.text-white-heading {
+    color: white; /* Cambia el color del texto a blanco */
+    font-family: 'Poppins', sans-serif; /* Fuente personalizada */
+    font-weight: 700; /* Peso de la fuente */
+    padding: 20px; /* Ajusta el padding según tus necesidades */
 }
