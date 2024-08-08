@@ -1,24 +1,25 @@
 {% extends "base.html" %}
-{% comment %} Esta vista sirve para desplegar el listado de clientes {% endcomment %}
 
 {% block title %}Lista de Clientes{% endblock title %}
 
 {% block content %}
-    <h1>Lista de Clientes</h1>
-    <div class="card-group">
-        {% for client in clients %}
+    <h1 class="text-center mb-4">Lista de Clientes</h1>
 
-
-            <ul class="list-group">
-                <li class="list-group-item">Identificacion: {{ client.cedula }}</li>
-                <li class="list-group-item">Cliente: {{ client.name }}</li>
-                <li class="list-group-item">Email: {{ client.email }}</li>
-                <li class="list-group-item">Direccion: {{ client.address }}</li>
-            </ul>
-        {% endfor %}
+    <div class="container d-flex justify-content-center">
+        <div class="list-group w-100" style="max-width: 800px;">
+            {% for client in clients %}
+                <div class="list-group-item">
+                    <h5 class="mb-3">Cliente {{ forloop.counter }}</h5>
+                    <p><strong>Nombre:</strong> {{ client.name }}</p>
+                    <p><strong>Cedula:</strong> {{ client.cedula }}</p>
+                    <p><strong>Email:</strong> {{ client.email }}</p>
+                    <p><strong>Dirección:</strong> {{ client.address }}</p>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary btn-sm">Editar cliente</a>
+                        <a href="#" class="btn btn-danger btn-sm">Eliminar cliente</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-
-
-
-
 {% endblock content %}

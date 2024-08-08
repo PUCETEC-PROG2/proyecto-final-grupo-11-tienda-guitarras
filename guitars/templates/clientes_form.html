@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
+<!-- Este codigo hace una lista de los clientes para mostrarla en "lista de clientes" -->
+
 {% block title %}Lista de Clientes{% endblock title %}Lista de Clientes
 {% block content %}
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Agregar Cliente</button>
-    </form>
+    
+    <ul padding="200px">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Agregar Cliente</button>
+        </form>
+    </ul>
 {% endblock content %}

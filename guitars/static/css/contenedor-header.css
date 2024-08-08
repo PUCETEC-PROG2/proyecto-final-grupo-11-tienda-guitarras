@@ -1,0 +1,19 @@
+body {
+    font-family: 'Elegant Font', sans-serif;
+}
+.contenedor-header {
+    text-align: center;
+    margin-top: 20px;
+}
+.contenedor-header .main-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.contenedor-header .navbar-custom {
+    background-color: red;
+}
+.contenedor-header .navbar-custom .navbar-brand,
+.contenedor-header .navbar-custom .nav-link {
+    color: rgb(202, 23, 23);
+}
