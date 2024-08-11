@@ -16,3 +16,27 @@ class Client(models.Model):
     
     def __str__(self) -> str:
         return (f'{self.name}')
+    
+    
+class Product(models.Model):
+    sku = models.CharField(max_length=10, null=False, unique=True)
+    brand = models.CharField(max_length=45, null=False)
+    model = models.CharField(max_length=45, null=False)
+    color = models.CharField(max_length=20, null=False)
+    GUITAR_CATEGORY = {
+        ('Guitarras Electricas', 'Guitarras Electricas'),
+        ('Guitarras Acusticas', 'Guitarras Acusticas'),
+        ('Guitarras Electro Acusticas', 'Guitarras Electro Acusticas'),
+        ('Guitarras Clasicas', 'Guitarras Clasicas'),
+        ('Bajos', 'Bajos')
+    }
+    category = models.CharField(max_length=45, choices=GUITAR_CATEGORY, null=False)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price_selling = models.DecimalField(max_digits=10, decimal_places=2)
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    picture = models.ImageField(upload_to='guitars_images')
+    stock = models.IntegerField()
+    
+    def __str__(self) -> str:
+        return (f'{self.brand} {self.model}')
+    

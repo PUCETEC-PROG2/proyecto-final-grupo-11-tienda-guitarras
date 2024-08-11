@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
-from .models import Client
-from guitars.forms import ClientForm
+from .models import Client, Product
+from guitars.forms import ClientForm, ProductForm, ProductStockForm
 
 
 # Create your views here.
@@ -36,3 +36,49 @@ def add_client(request):
     else:
         form = ClientForm()
     return render(request, 'clientes_form.html', {'form':form})
+
+
+#Vistas para los productos
+
+@login_required
+def create_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect ('guitars:index')
+    else:
+        form = ProductForm()
+    return render(request, 'product_form.html', {'form':form})
+
+#Agregar stock a un producto que ya existe (no funciona esta hvd)
+
+""" def add_stock(request):
+    if request.method == 'POST':
+        form = ProductStockForm(request.POST)
+        if form.is_valid():
+            sku = form.cleaned_data['sku']
+            quantity = form.cleaned_data['stock']
+            
+            try:
+                # Intenta encontrar el producto por SKU
+                product = Product.objects.get(sku=sku)
+                # Si el producto existe, actualiza el stock
+                product.stock = F('stock') + quantity
+                product.save()
+                mensaje = f"Stock actualizado para el producto con SKU {sku}. Nuevo stock: {product.stock + quantity}"
+            except Product.DoesNotExist:
+                # Si el producto no existe, muestra un mensaje de error
+                mensaje = f"No se encontró el producto con SKU {sku}. No se puede actualizar el stock."
+            
+            return render(request, 'error_stock.html', {'mensaje': mensaje})
+    else:
+        form = ProductStockForm()
+    
+    return render(request, 'add_stock.html', {'form': form}) """
+
+#Listar productos
+
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'product_list.html', {'products': products})

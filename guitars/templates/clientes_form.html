@@ -6,7 +6,9 @@
 {% block content %}
     
     <ul padding="200px">
-        <form method="post" enctype="multipart/form-data">
+        <h1 class="text-center mb-4 text-white-heading">Agregar Clientes</h1>
+
+        <form method="post" enctype="multipart/form-data" class="text-white">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Agregar Cliente</button>

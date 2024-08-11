@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Productos{% endblock title %}Lista de Productos
+{% block content %}
+    
+    <ul padding="200px">
+        <h1 class="text-center mb-4 text-white-heading">Crear Producto</h1>
+
+        <form method="post" enctype="multipart/form-data" class="text-white">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Crear Producto</button>
+
+        </form>
+    </ul>
+{% endblock content %}
