@@ -1,0 +1,46 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(13, 13, 15);
+    color: black;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 1500px;
+    padding-top: 60px; /* Adjust based on the height of your fixed navbar */
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed; /* Fix the navbar to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the navbar is on top of other content */
+    background-color: rgb(13, 13, 15); /* Match the navbar background with body */
+    border-bottom: 1px solid #333; /* Optional: Add a border for better separation */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Increase the size of the brand text */
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem; /* Increase text size */
+    padding: 0.75rem 1.25rem; /* Adjust padding for button size */
+}
+
+.navbar-toggler {
+    font-size: 1.5rem; /* Increase the size of the toggle icon */
+    padding: 0.75rem 1.5rem; /* Adjust padding for the toggle button */
+}
+
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}

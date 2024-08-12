@@ -69,41 +69,19 @@ def create_product(request):
         form = ProductForm()
     return render(request, 'product_form.html', {'form':form})
 
-#Agregar stock a un producto que ya existe (no funciona esta hvd)
 
-""" def add_stock(request):
-    if request.method == 'POST':
-        form = ProductStockForm(request.POST)
-        if form.is_valid():
-            sku = form.cleaned_data['sku']
-            quantity = form.cleaned_data['stock']
-            
-            try:
-                # Intenta encontrar el producto por SKU
-                product = Product.objects.get(sku=sku)
-                # Si el producto existe, actualiza el stock
-                product.stock = F('stock') + quantity
-                product.save()
-                mensaje = f"Stock actualizado para el producto con SKU {sku}. Nuevo stock: {product.stock + quantity}"
-            except Product.DoesNotExist:
-                # Si el producto no existe, muestra un mensaje de error
-                mensaje = f"No se encontró el producto con SKU {sku}. No se puede actualizar el stock."
-            
-            return render(request, 'error_stock.html', {'mensaje': mensaje})
-    else:
-        form = ProductStockForm()
-    
-    return render(request, 'add_stock.html', {'form': form}) """
 
 #Listar productos
 
-def product(request, product_id):
-    product = Product.objects.get(pk = product_id)
+def product(request, category_name, id):
+    product = get_object_or_404(Product, pk=id)
     template = loader.get_template('display_product.html')
     context = {
-        'product': product
+        'product': product,
+        'category_name': category_name  # Puedes incluir esta variable si necesitas mostrar la categoría en la plantilla
     }
     return HttpResponse(template.render(context, request))
+
 
 class CustomLoginView(LoginView):
     template_name = 'login.html'
@@ -114,19 +92,33 @@ def product_list(request):
 
 
 @login_required
-def edit_product(request, id):
-    product = get_object_or_404(Product, pk = id)
+def edit_product(request, category_name, id):
+    product = get_object_or_404(Product, pk=id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('guitars:index')
+            return redirect('guitars:category_view', category_name=category_name)
     else:
         form = ProductForm(instance=product)
-    return render (request, 'product_form.html', {'form': form})
-    
+    return render(request, 'product_form.html', {'form': form, 'category_name': category_name})
+
 @login_required
-def delete_product(request, id):
-    product = get_object_or_404(Product, pk = id)
+def delete_product(request, category_name, id):
+    product = get_object_or_404(Product, pk=id)
     product.delete()
-    return redirect("guitars:index")
+    return redirect('guitars:category_view', category_name=category_name)
+
+
+#Filtrar un producto por su categoria
+
+def category_view(request, category_name):
+    products = Product.objects.filter(category=category_name)
+    return render(request, 'categorias.html', {'products': products, 'category_name': category_name})
+
+#Mostrar todas las categorias
+
+def category_list(request):
+    # Obtén una lista de todas las categorías distintas
+    categories = Product.objects.values_list('category', flat=True).distinct()
+    return render(request, 'category_list.html', {'categories': categories})

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Lista de Categorías</title>
+
+</head>
+<body>
+    <h1 class="text-center mb-4 text-white-heading">Categorías</h1>
+    <ul>
+            <div class="list-group">
+              <h2 href="#" class="list-group-item list-group-item-action active">
+                Nuestras Categorias
+              </h2>
+              <a href="{% url 'guitars:category_view' 'Bajos' %}" class="list-group-item list-group-item-action">Bajos</a>
+              <a href="{% url 'guitars:category_view' 'Guitarras Electricas' %}" class="list-group-item list-group-item-action">Guitarras Electricas</a>
+              <a href="{% url 'guitars:category_view' 'Guitarras Acusticas' %}" class="list-group-item list-group-item-action">Guitarras Acusticas</a>
+              <a href="{% url 'guitars:category_view' 'Guitarras Electro Acusticas' %}" class="list-group-item list-group-item-action ">Guitarras Electroacusticas</a>
+              <a href="{% url 'guitars:category_view' 'Guitarras Clasicas' %}" class="list-group-item list-group-item-action ">Guitarras Clasicas</a>
+            </div>
+        
+    </ul>
+</body>
+</html>
+{% endblock content %}
