@@ -37,6 +37,24 @@ def add_client(request):
         form = ClientForm()
     return render(request, 'clientes_form.html', {'form':form})
 
+@login_required
+def edit_client(request, id):
+    client = get_object_or_404(Client, pk = id)
+    if request.method == 'POST':
+        form = ClientForm(request.POST, request.FILES, instance=client)
+        if form.is_valid():
+            form.save()
+            return redirect('guitars:index')
+    else:
+        form = ClientForm(instance=client)
+    return render (request, 'clientes_form.html', {'form': form})
+    
+@login_required
+def delete_client(request, id):
+    client = get_object_or_404(Client, pk = id)
+    client.delete()
+    return redirect("guitars:index")
+
 
 #Vistas para los productos
 
@@ -79,6 +97,36 @@ def create_product(request):
 
 #Listar productos
 
+def product(request, product_id):
+    product = Product.objects.get(pk = product_id)
+    template = loader.get_template('display_product.html')
+    context = {
+        'product': product
+    }
+    return HttpResponse(template.render(context, request))
+
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
+
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'product_list.html', {'products': products})
+
+
+@login_required
+def edit_product(request, id):
+    product = get_object_or_404(Product, pk = id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('guitars:index')
+    else:
+        form = ProductForm(instance=product)
+    return render (request, 'product_form.html', {'form': form})
+    
+@login_required
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk = id)
+    product.delete()
+    return redirect("guitars:index")
