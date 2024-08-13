@@ -1,0 +1,41 @@
+/* Default height for small devices */
+#intro-example {
+    height: 400px;
+}
+
+/* Height for devices larger than 992px */
+@media (min-width: 992px) {
+    #intro-example {
+        height: 600px;
+}
+
+/* Background color for the mask */
+.mask {
+    background-color: rgba(0, 0, 0, 0.7); /* Change the color and transparency as needed */
+}
+
+/* Navbar style */
+.navbar {
+    background-color: rgb(13, 13, 15) !important; /* Fondo negro para la barra de navegación */
+}
+
+.navbar .nav-link, .navbar .navbar-brand {
+    color: #fff !important; /* Texto blanco en los enlaces y marca */
+}
+
+.navbar .dropdown-menu {
+    background-color: rgb(13, 13, 15); /* Fondo negro para el menú desplegable */
+}
+
+.navbar .dropdown-item {
+    color: #fff !important; /* Texto blanco en los elementos del menú desplegable */
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #333; /* Fondo oscuro en hover para el menú desplegable */
+}
+
+/* Add margin-top to header */
+header {
+    margin-top: 10px; /* Adjust this value to your preference */
+}

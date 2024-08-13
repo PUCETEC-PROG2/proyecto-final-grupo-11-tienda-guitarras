@@ -1,6 +1,6 @@
 from django import forms 
 
-from .models import Client
+from .models import Client, Product
 
 class ClientForm(forms.ModelForm):
     class Meta:
@@ -12,3 +12,26 @@ class ClientForm(forms.ModelForm):
             'email': forms.TextInput(attrs={'class': 'form-control'}),
             'address': forms.TextInput(attrs={'class': 'form-control'})
         }
+        
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        widgets = {
+            'sku': forms.TextInput(attrs={'class': 'form-control'}),
+            'brand': forms.TextInput(attrs={'class': 'form-control'}),
+            'model': forms.TextInput(attrs={'class': 'form-control'}),
+            'color': forms.TextInput(attrs={'class': 'form-control'}),
+            'sku': forms.TextInput(attrs={'class': 'form-control'}),
+            'category': forms.Select(attrs={'class': 'form-control'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'price_selling': forms.NumberInput(attrs={'class': 'form-control'}),
+            'discount': forms.NumberInput(attrs={'class': 'form-control'}),
+            'picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'stock': forms.NumberInput(attrs={'class': 'form-control'})
+        }
+#Para agregar stock si un producto ya existe :p
+class ProductStockForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['sku', 'stock']  

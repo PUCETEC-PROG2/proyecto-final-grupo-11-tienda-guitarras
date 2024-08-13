@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 
+{% block title %}Lista de Productos{% endblock title %}
+
+{% block head %}
+    {{ block.super }}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+{% endblock head %}
+
 {% block content %}
-<h1 class="text-center mb-4 text-white-heading">{{ category_name }}</h1>
+    <h1 class="text-center mb-4 text-white-heading">Listado de Productos</h1>
+
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for product in products %}
             <div class="col">
@@ -14,13 +23,13 @@
                         <p class="card-text">Cantidad: {{ product.stock }}</p>
                         <p class="card-text">Color: {{ product.color }}</p>
                         <p class="card-text">Categoria: {{ product.category }}</p>
-                        <a href="product/{{product.id}}" class="btn btn-primary">
+                        <a href="{% url 'guitars:category_product' category_name=product.category id=product.id %}" class="btn btn-primary">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a href="edit_product/{{product.id}}" class="btn btn-primary">
+                        <a href="{% url 'guitars:edit_category_product' category_name=product.category id=product.id %}" class="btn btn-primary">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
-                        <a href="delete_product/{{product.id}}" class="btn btn-danger">
+                        <a href="{% url 'guitars:delete_category_product' category_name=product.category id=product.id %}" class="btn btn-danger">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </div>

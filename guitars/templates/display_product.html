@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} {{product}} {% endblock title %}
+{% block content %}
+    <h1 class="text-center mb-4 text-white-heading">{{ product | capfirst }}</h1>
+
+    <div class="col">
+        <div class="card h-100">
+            <img src="{{ product.picture.url }}" class="card-img-top" alt="{{ product.model }}" >
+            <div class="card-body">
+                <p class="card-text">Sku: {{ product.sku }}</p>
+                <p class="card-text">Marca: {{ product.brand }} {{product.model}}</p>
+                <p class="card-text">Precio de Compra: ${{ product.price }}</p>
+                <p class="card-text">Precio de venta: ${{ product.price_selling }}</p>
+                <p class="card-text">Descuento: {{ product.discount }}</p>
+                <p class="card-text">Cantidad: {{ product.stock }}</p>
+                <p class="card-text">Color: {{ product.color }}</p>
+                <p class="card-text">Categoria: {{ product.category }}</p>
+                <a href="/" class="btn btn-primary">Regresar</a>
+
+            </div>
+        </div>
+    </div>
+
+  
+
+
+{% endblock content %}

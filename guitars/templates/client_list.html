@@ -16,8 +16,8 @@
                     <p><strong>Email:</strong> {{ client.email }}</p>
                     <p><strong>Dirección:</strong> {{ client.address }}</p>
                     <div class="btn-group">
-                        <a href="#" class="btn btn-primary btn-sm">Editar cliente</a>
-                        <a href="#" class="btn btn-danger btn-sm">Eliminar cliente</a>
+                        <a href="edit_client/{{client.id}}" class="btn btn-primary btn-sm">Editar cliente</a>
+                        <a href="delete_client/{{client.id}}" class="btn btn-danger btn-sm">Eliminar cliente</a>
                     </div>
                 </div>
             {% endfor %}

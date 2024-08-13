@@ -1,0 +1,15 @@
+/* static/css/product.css */
+/* Estilos de las cards de los productos */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.row-cols-md-3 > .col {
+    margin-bottom: 40px; /* Aumenta el margen inferior */
+}
+
+.card {
+    margin: 15px !important; /* Añade margen alrededor de cada card */
+}
+

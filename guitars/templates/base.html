@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-rbsA4uWz4qA1y9xFiDhwNTnqok3vyykqcf51dnZm+zKP9ENb/jhdzjHgQ5A6dcrj" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/custom_styles.css' %}">
+<<<<<<< HEAD
     <!-- Include the inline CSS for navbar -->
 
 <style>
@@ -59,6 +60,10 @@
     }
 </style>
 
+=======
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+>>>>>>> b0ecac42824aafd637407d996c2bdd06cfe2cf35
 </head>
 <body>
     <div class="container">
@@ -92,12 +97,16 @@
                         Productos
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Bajos</a></li>
-                        <li><a class="dropdown-item" href="#">Guitarras Electricas</a></li>
-                        <li><a class="dropdown-item" href="#">Guitarras Acusticas</a></li>
-                        <li><a class="dropdown-item" href="#">Guitarras Electroacusticas</a></li>
-                        <li><a class="dropdown-item" href="#">Guitarras Clasicas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Bajos' %}">Bajos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Electricas' %}">Guitarras Electricas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Acusticas' %}">Guitarras Acusticas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Electro Acusticas' %}">Guitarras Electroacusticas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Clasicas' %}">Guitarras Clasicas</a></li>
                       </ul>
+                    </li>
+
+                    <li class="nav-item active">
+                      <a class="nav-link" href="{% url "guitars:create_product" %}">Agregar Producto</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'guitars:logout' %}">Logout</a>
