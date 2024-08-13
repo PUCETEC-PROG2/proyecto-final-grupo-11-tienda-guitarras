@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
-from .models import Client, Product
-from guitars.forms import ClientForm, ProductForm, ProductStockForm
+from .models import Client, Product, Sale
+from guitars.forms import ClientForm, ProductForm, ProductStockForm, SaleForm
 
 
 # Create your views here.
@@ -122,3 +122,40 @@ def category_list(request):
     # Obtén una lista de todas las categorías distintas
     categories = Product.objects.values_list('category', flat=True).distinct()
     return render(request, 'category_list.html', {'categories': categories})
+
+
+                                                                            
+def sale_list(request):                                                   
+    sales = Sale.objects.all()                                          	
+
+    return render(request, 'sale_list.html', {'sales':sales})         
+                                                                            
+                                                                            
+@login_required                                                             
+def add_sale(request):                                                    
+    if request.method == 'POST':                                            
+        form = SaleForm(request.POST, request.FILES)                      
+        if form.is_valid():                                                 
+            form.save()                                                     
+            return redirect ('guitars:index')                               
+    else:                                                                   
+        form = SaleForm()                                                
+    return render(request, 'sale_form.html', {'form':form})             
+                                                                            
+@login_required                                                             
+def edit_sale(request, id):                                               
+    sale = get_object_or_404(Sale, pk = id)                             
+    if request.method == 'POST':                                            
+        form = SaleForm(request.POST, request.FILES, instance=sale)     
+        if form.is_valid():                                                 
+            form.save()                                                     
+            return redirect('guitars:index')                                
+    else:                                                                   
+        form = ClientForm(instance=client)                                  
+    return render (request, 'clientes_form.html', {'form': form})           
+                                                                            
+@login_required                                                             
+def delete_sale(request, id):                                             
+    sale = get_object_or_404(Sale, pk = id)                             
+    sale.delete()                                                         
+    return redirect("guitars:index")  

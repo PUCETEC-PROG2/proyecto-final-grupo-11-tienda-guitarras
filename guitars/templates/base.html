@@ -89,9 +89,14 @@
                         <li><a class="dropdown-item" href="{% url 'guitars:add_client' %}">Agregar Clientes</a></li>
                       </ul>
                     </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Ventas</a>
-                    </li>
+                    <li class="nav-item dropdown active">
+                                          <a class="nav-link dropdown-toggle" href="{% url 'guitars:sale_list' %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ventas                                            
+                      </a>                                                  
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                                                               
+                        <li><a class="dropdown-item" href="{% url 'guitars:sale_list' %}">Listado de Ventas</a></li>                                
+                        <li><a class="dropdown-item" href="{% url 'guitars:add_sale' %}">Agregar Venta</a></li>                                    
+                      </ul> 			
+</li>
                     <li class="nav-item dropdown active">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Productos

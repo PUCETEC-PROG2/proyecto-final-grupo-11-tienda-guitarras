@@ -39,4 +39,20 @@ class Product(models.Model):
     
     def __str__(self) -> str:
         return (f'{self.brand} {self.model}')
-    
+
+
+class Sale(models.Model):                                                
+    client = models.CharField(max_length=45, null=False)                     
+    GUITAR_CATEGORY = {                                                     
+        ('Guitarras Electricas', 'Guitarras Electricas'),                   
+        ('Guitarras Acusticas', 'Guitarras Acusticas'),                     
+        ('Guitarras Electro Acusticas', 'Guitarras Electro Acusticas'),     
+        ('Guitarras Clasicas', 'Guitarras Clasicas'),                       
+        ('Bajos', 'Bajos')                                                  
+    }                                                                       
+    product = models.CharField(max_length=45, choices=GUITAR_CATEGORY, null=False)                                                                     
+    total = models.DecimalField(max_digits=10, decimal_places=2)            
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)                                                                        
+                                                                            
+    def __str__(self) -> str:                                               
+        return (f'{self.brand} {self.model}')      

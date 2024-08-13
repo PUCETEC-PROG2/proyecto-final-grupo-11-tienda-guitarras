@@ -1,6 +1,6 @@
 from django import forms 
 
-from .models import Client, Product
+from .models import Client, Product, Sale
 
 class ClientForm(forms.ModelForm):
     class Meta:
@@ -12,6 +12,18 @@ class ClientForm(forms.ModelForm):
             'email': forms.TextInput(attrs={'class': 'form-control'}),
             'address': forms.TextInput(attrs={'class': 'form-control'})
         }
+
+class SaleForm(forms.ModelForm):                                          
+    class Meta:                                                             
+        model = Sale                                                      
+        fields = '__all__'                                                  
+        widgets = {                                                         
+            'client': forms.Select(attrs={'class': 'form-control'}),     
+            'product': forms.Select(attrs={'class': 'form-control'}),       
+	    'total': forms.TextInput(attrs={'class': 'form-control'}),      
+ 	    'date': forms.TextInput(attrs={'class': 'form-control'})     
+        }                                                                   
+          
         
 class ProductForm(forms.ModelForm):
     class Meta:

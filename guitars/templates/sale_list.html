@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Lista de Categorías</title>
+
+</head>
+<body>
+    <h1 class="text-center mb-4 text-white-heading">Ventas</h1>
+<div class="row row-cols-1 row-cols-md-3 g-4">                          
+        {% for sale in sales %}                                       
+            <div class="col">                                               
+                <div class="card h-100">                                    
+                    <img src="{{ product.picture.url }}" class="card-img-top" alt="{{ product.model }}">                                                
+                    <div class="card-body">                                 
+                        <h5 class="card-title">{{ product.brand }} {{ product.model }}</h5>                                                             
+                        <p class="card-text">Sku: {{ product.sku }}</p>     
+                        <p class="card-text">Precio: ${{ product.price_selling }}</p>                                                                   
+                        <p class="card-text">Cantidad: {{ product.stock }}</p>                                                                          
+                        <p class="card-text">Color: {{ product.color }}</p> 
+                        <p class="card-text">Categoria: {{ product.category }}</p>                                                                      
+                        <a href="{% url 'guitars:category_product' category_name=product.category id=product.id %}" class="btn btn-primary">            
+                            <i class="fa-solid fa-eye"></i>                 
+                        </a>                                                
+                        <a href="{% url 'guitars:edit_category_product' category_name=product.category id=product.id %}" class="btn btn-primary">       
+                            <i class="fa-solid fa-pencil"></i>              
+                        </a>                                                
+                        <a href="{% url 'guitars:delete_category_product' category_name=product.category id=product.id %}" class="btn btn-danger">      
+                            <i class="fa-solid fa-trash"></i>               
+                        </a>                                                
+                    </div>                                                  
+                </div>                                                      
+            </div>                                                          
+        {% endfor %}                                                        
+    </div>    
+
+</body>
+</html>
+{% endblock content %}    
