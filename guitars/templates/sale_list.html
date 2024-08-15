@@ -16,10 +16,6 @@
  	  	    <p><strong>Productos Vendidos:</strong> {{ sale.products }}</p>
                     <p><strong>Descuento:</strong> {{ sale.discount }}</p>
                     <p><strong>Total:</strong> {{ sale.total }}</p>
-                    <div class="btn-group">
-                        <a href="edit_sale/{{sale.id}}" class="btn btn-primary btn-sm">Editar venta</a>
-                        <a href="delete_sale/{{sale.id}}" class="btn btn-danger btn-sm">Eliminar venta</a>
-                    </div>
                 </div>
             {% endfor %}
         </div>
