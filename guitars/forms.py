@@ -38,10 +38,12 @@ class ProductForm(forms.ModelForm):
 class SaleForm(forms.ModelForm):
     class Meta:
         model = Sale
-        fields = ['client', 'discount','total']
+        fields = ['client', 'discount','total', 'product']
         widgets = {
             'client': forms.Select(attrs={'class': 'form-control'}),
             'discount': forms.NumberInput(attrs={'class': 'form-control'}),
-	    'total': forms.NumberInput(attrs={'class':'form-control'})
+	    'total': forms.NumberInput(attrs={'class':'form-control'}),	
+            'product': forms.Select(attrs={'class': 'form-control'})
+
         }
 

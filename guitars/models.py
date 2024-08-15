@@ -51,6 +51,7 @@ class Sale(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     discount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, default=1,blank=True, null=True)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     def __str__(self):
         return f"Venta {self.id} - Cliente: {self.client}"
