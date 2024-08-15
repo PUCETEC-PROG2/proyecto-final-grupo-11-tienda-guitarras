@@ -7,11 +7,32 @@ li {
     margin: 5px 0;
 }
 
-a {
-    text-decoration: none;
-    color: #007bff;
-}
-
 a:hover {
     text-decoration: underline;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    min-height: calc(100vh - 60px); /* Ajusta el valor según la altura del pie de página */
+    padding-bottom: 60px; /* Espacio para el pie de página */
+    box-sizing: border-box;
+}
+
+.list-group {
+    max-height: 80vh; /* Ajusta la altura máxima del contenedor de la lista */
+    overflow-y: auto; /* Habilita el scroll vertical si el contenido excede la altura */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40; /* Color de fondo del pie de página */
+    color: white; /* Color del texto del pie de página */
+    text-align: center;
+    padding: 10px 0; /* Espaciado dentro del pie de página */
 }

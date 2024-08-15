@@ -27,8 +27,13 @@ def validar_cedula(value):
     
     
 #Funcion para validar el correo
+from django.core.exceptions import ValidationError
+
 def validar_correo(value):
     if '@' not in value:
-        raise ValidationError('Correo electrónico no válido. Debe contener al menos una arroba (@).')
+        raise ValidationError('Correo electrónico no válido. Debe contener al menos una arroba @')
+    if '.' not in value:
+        raise ValidationError('Correo electrónico no válido. Debe contener un punto . ')
+
 
     

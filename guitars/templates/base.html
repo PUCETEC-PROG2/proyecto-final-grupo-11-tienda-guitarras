@@ -8,62 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-rbsA4uWz4qA1y9xFiDhwNTnqok3vyykqcf51dnZm+zKP9ENb/jhdzjHgQ5A6dcrj" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/custom_styles.css' %}">
-<<<<<<< HEAD
-    <!-- Include the inline CSS for navbar -->
-
-<style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgb(13, 13, 15);
-        color: black;
-    }
-    
-    .container {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        max-width: 1500px;
-        padding-top: 60px; /* Adjust based on the height of your fixed navbar */
-    }
-
-    /* Navbar Styles */
-    .navbar {
-        position: fixed; /* Fix the navbar to the top */
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000; /* Ensure the navbar is on top of other content */
-        background-color: rgb(13, 13, 15); /* Match the navbar background with body */
-        border-bottom: 1px solid #333; /* Optional: Add a border for better separation */
-    }
-
-    .navbar-brand {
-        font-size: 1.5rem; /* Increase the size of the brand text */
-    }
-
-    .navbar-nav .nav-link {
-        font-size: 1.2rem; /* Increase text size */
-        padding: 0.75rem 1.25rem; /* Adjust padding for button size */
-    }
-
-    .navbar-toggler {
-        font-size: 1.5rem; /* Increase the size of the toggle icon */
-        padding: 0.75rem 1.5rem; /* Adjust padding for the toggle button */
-    }
-
-    .navbar-nav {
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
-
-=======
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-
->>>>>>> b0ecac42824aafd637407d996c2bdd06cfe2cf35
+    <link rel="icon" href="{% static "logo.png" %}" type="image/png">
 </head>
 <body>
     <div class="container">
@@ -90,23 +36,23 @@
                       </ul>
                     </li>
                     <li class="nav-item dropdown active">
-                                          <a class="nav-link dropdown-toggle" href="{% url 'guitars:sale_list' %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ventas                                            
+                      <a class="nav-link dropdown-toggle" href="{% url 'guitars:sale_list' %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ventas                                            
                       </a>                                                  
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                                                               
                         <li><a class="dropdown-item" href="{% url 'guitars:sale_list' %}">Listado de Ventas</a></li>                                
                         <li><a class="dropdown-item" href="{% url 'guitars:add_sale' %}">Agregar Venta</a></li>                                    
                       </ul> 			
-</li>
+                    </li>
                     <li class="nav-item dropdown active">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Productos
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Bajos' %}">Bajos</a></li>
-                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Electricas' %}">Guitarras Electricas</a></li>
-                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Acusticas' %}">Guitarras Acusticas</a></li>
-                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Electro Acusticas' %}">Guitarras Electroacusticas</a></li>
-                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Clasicas' %}">Guitarras Clasicas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Electricas' %}">Guitarras Eléctricas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Acusticas' %}">Guitarras Acústicas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Electro Acusticas' %}">Guitarras Electroacústicas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'guitars:category_view' 'Guitarras Clasicas' %}">Guitarras Clásicas</a></li>
                       </ul>
                     </li>
 
@@ -126,8 +72,12 @@
             </nav>
             {% include 'header.html' %}
         </div>
-        {% block content %}  {% endblock content %}
+        {% block content %}{% endblock content %}
     </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-center mb-4 text-white-heading" >© 2024 Tienda de Guitarras. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>
-

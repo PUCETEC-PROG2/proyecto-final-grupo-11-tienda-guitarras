@@ -5,42 +5,58 @@ body, html {
     height: 100%;
     background-color: rgb(13, 13, 15);
     color: black;
+    box-sizing: border-box; /* Asegura que el tamaño del contenedor se calcule correctamente */
 }
 
+/* Container adjustments */
 .container {
     padding: 0;
     margin: 0;
     width: 100%;
     max-width: 1500px;
-    padding-top: 60px; /* Adjust based on the height of your fixed navbar */
+    padding-top: 60px; /* Ajusta según la altura de la barra de navegación fija */
+    padding-bottom: 60px; /* Espacio para el pie de página */
+    box-sizing: border-box;
 }
 
 /* Navbar Styles */
 .navbar {
-    position: fixed; /* Fix the navbar to the top */
+    position: fixed; /* Fija la barra de navegación en la parte superior */
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensure the navbar is on top of other content */
-    background-color: rgb(13, 13, 15); /* Match the navbar background with body */
-    border-bottom: 1px solid #333; /* Optional: Add a border for better separation */
+    z-index: 1000; /* Asegura que la barra de navegación esté encima del contenido */
+    background-color: rgb(13, 13, 15); /* Coincide con el fondo del cuerpo */
+    border-bottom: 1px solid #333; /* Opcional: agrega una línea de separación */
 }
 
 .navbar-brand {
-    font-size: 1.5rem; /* Increase the size of the brand text */
+    font-size: 1.5rem; /* Aumenta el tamaño del texto del logotipo */
 }
 
 .navbar-nav .nav-link {
-    font-size: 1.2rem; /* Increase text size */
-    padding: 0.75rem 1.25rem; /* Adjust padding for button size */
+    font-size: 1.2rem; /* Aumenta el tamaño del texto */
+    padding: 0.75rem 1.25rem; /* Ajusta el relleno del botón */
 }
 
 .navbar-toggler {
-    font-size: 1.5rem; /* Increase the size of the toggle icon */
-    padding: 0.75rem 1.5rem; /* Adjust padding for the toggle button */
+    font-size: 1.5rem; /* Aumenta el tamaño del ícono de alternancia */
+    padding: 0.75rem 1.5rem; /* Ajusta el relleno del botón de alternancia */
 }
 
 .navbar-nav {
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Footer Styles */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(13, 13, 15); /* Coincide con el fondo del cuerpo */
+    color: white; /* Color del texto del pie de página */
+    text-align: center;
+    padding: 10px 0; /* Espaciado dentro del pie de página */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Opcional: sombra para separación */
 }
