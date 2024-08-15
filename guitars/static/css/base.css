@@ -15,7 +15,7 @@ body, html {
     width: 100%;
     max-width: 1500px;
     padding-top: 60px; /* Ajusta según la altura de la barra de navegación fija */
-    padding-bottom: 60px; /* Espacio para el pie de página */
+    padding-bottom: -10px; /* Espacio para el pie de página */
     box-sizing: border-box;
 }
 
@@ -51,12 +51,13 @@ body, html {
 
 /* Footer Styles */
 .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    bottom: 0; /* Coloca el pie de página en la parte inferior de la pantalla */
+    width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
     background-color: rgb(13, 13, 15); /* Coincide con el fondo del cuerpo */
     color: white; /* Color del texto del pie de página */
     text-align: center;
-    padding: 10px 0; /* Espaciado dentro del pie de página */
+    padding: 5px 0; /* Reduce el padding para que ocupe menos espacio */
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Opcional: sombra para separación */
+    font-size: 12px; /* Reduce el tamaño de fuente si es necesario */
+    line-height: 1.2; /* Ajusta la altura de la línea para reducir el espacio vertical */
 }

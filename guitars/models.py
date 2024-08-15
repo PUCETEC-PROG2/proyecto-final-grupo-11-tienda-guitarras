@@ -41,18 +41,25 @@ class Product(models.Model):
         return (f'{self.brand} {self.model}')
 
 
-class Sale(models.Model):                                                
-    client = models.CharField(max_length=45, null=False)                     
-    GUITAR_CATEGORY = {                                                     
-        ('Guitarras Electricas', 'Guitarras Electricas'),                   
-        ('Guitarras Acusticas', 'Guitarras Acusticas'),                     
-        ('Guitarras Electro Acusticas', 'Guitarras Electro Acusticas'),     
-        ('Guitarras Clasicas', 'Guitarras Clasicas'),                       
-        ('Bajos', 'Bajos')                                                  
-    }                                                                       
-    product = models.CharField(max_length=45, choices=GUITAR_CATEGORY, null=False)                                                                     
-    total = models.DecimalField(max_digits=10, decimal_places=2)            
-    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)                                                                        
-                                                                            
-    def __str__(self) -> str:                                               
-        return (f'{self.brand} {self.model}')      
+
+#Modelo de las ventas (hace el calculo total)
+
+
+#ventas
+
+class Sale(models.Model):
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    discount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    def __str__(self):
+        return f"Venta {self.id} - Cliente: {self.client}"
+
+class SaleItem(models.Model):
+    sale = models.ForeignKey(Sale,  related_name='sale_items',  on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.product} - Cantidad: {self.quantity}"

@@ -11,8 +11,8 @@ urlpatterns = [
     path('add_client/', views.add_client, name="add_client"),
     path('client/', views.client_list, name="client_list"),
     path('sale/', views.sale_list, name='sale_list'),
-    path('sale/edit_sale/<int:id>', views.edit_sale, name="edit_sale"),
-    path('sale/delete_sale/<int:id>', views.delete_sale, name="delete_sale"),
+    # path('sale/edit_sale/<int:id>', views.edit_sale, name="edit_sale"),
+    # path('sale/delete_sale/<int:id>', views.delete_sale, name="delete_sale"),
     path('add_sale/', views.add_sale, name="add_sale"),
     path('create_product/', views.create_product, name="create_product"),
     path('product/', views.product_list, name="product_list"),
@@ -25,7 +25,5 @@ urlpatterns = [
     path('category/<str:category_name>/edit_product/<int:id>/', views.edit_product, name='edit_category_product'),
     path('category/<str:category_name>/delete_product/<int:id>/', views.delete_product, name='delete_category_product'),
     path('categories/', views.category_list, name='category_list'),
-
-    
 ]
 

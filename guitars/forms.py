@@ -1,6 +1,8 @@
-from django import forms 
+from django import forms
+from django.shortcuts import redirect 
 
-from .models import Client, Product, Sale
+from .models import Client, Product, Sale, SaleItem
+from guitars import models
 
 class ClientForm(forms.ModelForm):
     class Meta:
@@ -13,18 +15,7 @@ class ClientForm(forms.ModelForm):
             'address': forms.TextInput(attrs={'class': 'form-control'})
         }
 
-class SaleForm(forms.ModelForm):                                          
-    class Meta:                                                             
-        model = Sale                                                      
-        fields = '__all__'                                                  
-        widgets = {                                                         
-            'client': forms.Select(attrs={'class': 'form-control'}),     
-            'product': forms.Select(attrs={'class': 'form-control'}),       
-	    'total': forms.TextInput(attrs={'class': 'form-control'}),      
- 	    'date': forms.TextInput(attrs={'class': 'form-control'})     
-        }                                                                   
-          
-        
+
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
@@ -42,8 +33,46 @@ class ProductForm(forms.ModelForm):
             'picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'stock': forms.NumberInput(attrs={'class': 'form-control'})
         }
-#Para agregar stock si un producto ya existe :p
-class ProductStockForm(forms.ModelForm):
+
+
+#formulario de ingreso de ventas (verificando que exista el producto y el cliente) 
+
+# Asegúrate de no tener importaciones que causen dependencias circulares
+from django import forms
+from .models import Sale, SaleItem, Client, Product
+
+class SaleForm(forms.ModelForm):
     class Meta:
-        model = Product
-        fields = ['sku', 'stock']  
+        model = Sale
+        fields = ['client', 'discount']
+        widgets = {
+            'client': forms.Select(attrs={'class': 'form-control'}),
+            'discount': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
+
+
+class SaleItemForm(forms.ModelForm):
+    class Meta:
+        model = SaleItem
+        fields = ['sale', 'product', 'quantity',   'price']
+        widgets = {
+            'product': forms.Select(attrs={'class': 'form-control'}),
+            'quantity': forms.NumberInput(attrs={'class': 'form-control', 'min': '1'}),
+            'quantity': forms.NumberInput(attrs={'class': 'form-control', 'min': '1'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control', 'min': '0'})
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        product = cleaned_data.get('product')
+        quantity = cleaned_data.get('quantity')
+
+        if product and quantity:
+            if product.stock < quantity:
+                raise forms.ValidationError(f'No hay suficiente stock para el producto {product.name}. Solo quedan {product.stock} unidades.')
+
+        return cleaned_data
+
+SaleItemFormSet = forms.inlineformset_factory(
+    Sale, SaleItem, form=SaleItemForm, extra=1, can_delete=True
+)

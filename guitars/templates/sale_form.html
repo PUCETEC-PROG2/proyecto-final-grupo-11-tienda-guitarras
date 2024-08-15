@@ -1,16 +1,22 @@
 {% extends "base.html" %}
-
-{% block title %}Lista de Ventas{% endblock title %}Lista de Ventas
 {% block content %}
+<h1 class="text-center mb-4 text-white-heading">Listado de Ventas</h1>
+
+<form method="post" class="text-white">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+
+    <h3>Items de la Venta</h3>
+    {{ formset.management_form }}
+    {% for form in formset %}
+        <div class="form-group">
+            {{ form.product.label_tag }} {{ form.product }}
+            {{ form.quantity.label_tag }} {{ form.quantity }}
+            <button type="button" class="btn btn-danger" onclick="this.closest('.formset-row').remove()">Eliminar</button>
+        </div>
+    {% endfor %}
     
-    <ul padding="200px">
-        <h1 class="text-center mb-4 text-white-heading">Registrar Venta</h1>
-
-        <form method="post" enctype="multipart/form-data" class="text-white">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Registrar Venta</button>
-
-        </form>
-    </ul>
-{% endblock content %}                                                      
+    <button type="submit" class="btn btn-primary">Guardar Venta</button>
+</form>
+{% endblock content %}
