@@ -1,35 +1,28 @@
 {% extends "base.html" %}
 
+{% block title %}Lista de Ventas{% endblock title %}
+
 {% block content %}
-    <h1 class="text-center mb-4 text-white-heading">Ventas</h1>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for sale in sales %}
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Cliente: {{ sale.client.name }}</h5>
-                        <p class="card-text">Descuento: ${{ sale.discount }}</p>
-                        <p class="card-text">Total: ${{ sale.total_amount }}</p>
-                        <hr>
-                        <h6>Productos:</h6>
-                        {% if sale.sale_items.exists %}
-                            {% for item in sale.sale_items.all %}
-                                <div class="mb-2">
-                                    <p class="card-text">Producto: {{ item.product.brand }} {{ item.product.model }}</p>
-                                    <p class="card-text">Sku: {{ item.product.sku }}</p>
-                                    <p class="card-text">Precio: ${{ item.product.price_selling }}</p>
-                                    <p class="card-text">Cantidad: {{ item.quantity }}</p>
-                                    <p class="card-text">Color: {{ item.product.color }}</p>
-                                    <p class="card-text">Categoría: {{ item.product.category }}</p>
-                                    <hr>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <p>No hay productos para esta venta.</p>
-                        {% endif %}
+    {% load static %}
+    <h1 class="text-center mb-4 text-white-heading">Lista de Ventas</h1>
+
+    <div class="container d-flex justify-content-center">
+        <div class="list-group w-100" style="max-width: 800px;">
+            {% for sale in sales %}
+                <div class="list-group-item border border-white bg-gray mb-3">
+                    <h5 class="mb-3">Venta {{ forloop.counter }}</h5>
+                    <p><strong>Cliente:</strong> {{ sale.client }}</p>
+                    <p><strong>Fecha:</strong> {{ sale.date }}</p>
+ 	  	    <p><strong>Productos Vendidos:</strong> {{ sale.products }}</p>
+                    <p><strong>Descuento:</strong> {{ sale.discount }}</p>
+                    <p><strong>Total:</strong> {{ sale.total }}</p>
+                    <div class="btn-group">
+                        <a href="edit_sale/{{sale.id}}" class="btn btn-primary btn-sm">Editar venta</a>
+                        <a href="delete_sale/{{sale.id}}" class="btn btn-danger btn-sm">Eliminar venta</a>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock content %}
+~                           

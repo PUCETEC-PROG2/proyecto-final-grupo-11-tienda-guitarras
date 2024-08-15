@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from .models import Client, Product, Sale
-from guitars.forms import ClientForm, ProductForm,  SaleForm, SaleItemFormSet
+from guitars.forms import ClientForm, ProductForm,  SaleForm
 
 
 # Create your views here.
@@ -126,72 +126,34 @@ def category_list(request):
 
 def sale_list(request):
     sales = Sale.objects.all()
-    return render(request, 'sale_list.html', {'sale':sales})
+    return render(request, 'sale_list.html', {'sales':sales})
 
                                                                             
-from django.shortcuts import render, redirect
-from .forms import SaleForm, SaleItemFormSet
-from .models import Sale, SaleItem, Product
-
 def add_sale(request):
     if request.method == 'POST':
-        form = SaleForm(request.POST)
-        formset = SaleItemFormSet(request.POST, instance=form.instance)
-        
-        if form.is_valid() and formset.is_valid():
-            sale = form.save(commit=False)
-            total_amount = 0
-            
-            # Calcula el monto total basándote en los productos y cantidades
-            for sale_item_form in formset:
-                sale_item = sale_item_form.save(commit=False)
-                if sale_item.product and sale_item.quantity:
-                    total_amount += sale_item.product.price_selling * sale_item.quantity
-            
-            # Asigna el total_amount calculado
-            sale.total_amount = total_amount
-            sale.save()
-            
-            # Guarda los items de la venta relacionados
-            formset.instance = sale
-            formset.save()
-            
-            return redirect('guitars:index')
+        form = SaleForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect ('guitars:index')
     else:
         form = SaleForm()
-        formset = SaleItemFormSet(instance=form.instance)
-    
-    products = Product.objects.all()
-    return render(request, 'sale_form.html', {'form': form, 'formset': formset, 'products': products})
+    return render(request, 'sale_form.html', {'form':form})
 
-# @login_required                                                             
-# def edit_sale(request, id):                                               
-#     sale = get_object_or_404(Sale, pk = id)                             
-#     if request.method == 'POST':                                            
-#         form = SaleForm(request.POST, request.FILES, instance=sale)     
-#         if form.is_valid():                                                 
-#             form.save()                                                     
-#             return redirect('guitars:index')                                
-#     else:                                                                   
-#         form = ClientForm(instance=client)                                  
-#     return render (request, 'clientes_form.html', {'form': form})           
-                                                                            
-# @login_required                                                             
-# def delete_sale(request, id):                                             
-#     sale = get_object_or_404(Sale, pk = id)                             
-#     sale.delete()                                                         
-#     return redirect("guitars:index")  
 
-# #Funcion para resigrar una nueva venta
-# @login_required
-# def nueva_venta(request):
-#     if request.method == 'POST':
-#         form = SaleForm(request.POST)
-#         if form.is_valid():
-#             sale = form.save(commit=False)
-#             sale.save()
-#             form.save_m2m()  # Guarda la relación ManyToMany y actualiza el stock
-#             return redirect('sale_list.html')  # Redirigir después de la venta exitosa
-#     else:
-#         form = SaleForm()
-#     return render(request, 'sale_form.html', {'form': form})
+@login_required
+def edit_sale(request, id):
+    sale = get_object_or_404(Sale, pk = id)
+    if request.method == 'POST':
+        form = SaleForm(request.POST, request.FILES, instance=sale)
+        if form.is_valid():
+            form.save()
+            return redirect('guitars:index')
+    else:
+        form = SaleForm(instance=sale)
+    return render (request, 'sale_form.html', {'form': form})
+   
+@login_required
+def delete_sale(request, id):
+    sale = get_object_or_404(Sale, pk = id)
+    sale.delete()
+    return redirect("guitars:index")
