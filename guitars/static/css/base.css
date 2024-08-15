@@ -14,7 +14,7 @@ body, html {
     margin: 0;
     width: 100%;
     max-width: 1500px;
-    padding-top: 60px; /* Ajusta según la altura de la barra de navegación fija */
+    padding-top: 0px; /* Ajusta según la altura de la barra de navegación fija */
     padding-bottom: 60px; /* Espacio para el pie de página */
     box-sizing: border-box;
 }
@@ -51,7 +51,6 @@ body, html {
 
 /* Footer Styles */
 .footer {
-    position: fixed;
     bottom: 0;
     width: 100%;
     background-color: rgb(13, 13, 15); /* Coincide con el fondo del cuerpo */
