@@ -14,8 +14,13 @@ body, html {
     margin: 0;
     width: 100%;
     max-width: 1500px;
+<<<<<<< HEAD
     padding-top: 60px; /* Ajusta según la altura de la barra de navegación fija */
     padding-bottom: -10px; /* Espacio para el pie de página */
+=======
+    padding-top: 0px; /* Ajusta según la altura de la barra de navegación fija */
+    padding-bottom: 60px; /* Espacio para el pie de página */
+>>>>>>> 6018f06857ed0486d5093d65e4a250ffdb799e5f
     box-sizing: border-box;
 }
 
@@ -51,8 +56,13 @@ body, html {
 
 /* Footer Styles */
 .footer {
+<<<<<<< HEAD
     bottom: 0; /* Coloca el pie de página en la parte inferior de la pantalla */
     width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
+=======
+    bottom: 0;
+    width: 100%;
+>>>>>>> 6018f06857ed0486d5093d65e4a250ffdb799e5f
     background-color: rgb(13, 13, 15); /* Coincide con el fondo del cuerpo */
     color: white; /* Color del texto del pie de página */
     text-align: center;
