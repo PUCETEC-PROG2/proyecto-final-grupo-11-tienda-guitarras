@@ -1,0 +1,14 @@
+.logout-button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.logout-button:hover {
+    text-decoration: underline; /* Opcional: similar a un enlace al pasar el cursor */
+}
