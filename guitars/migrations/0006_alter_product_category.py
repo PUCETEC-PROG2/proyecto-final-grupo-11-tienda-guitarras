@@ -13,6 +13,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='product',
             name='category',
+<<<<<<< HEAD
             field=models.CharField(choices=[('Bajos', 'Bajos'), ('Guitarras Clasicas', 'Guitarras Clasicas'), ('Guitarras Acusticas', 'Guitarras Acusticas'), ('Guitarras Electricas', 'Guitarras Electricas'), ('Guitarras Electro Acusticas', 'Guitarras Electro Acusticas')], max_length=45),
+=======
+            field=models.CharField(choices=[('Guitarras Electro Acusticas', 'Guitarras Electro Acusticas'), ('Guitarras Clasicas', 'Guitarras Clasicas'), ('Guitarras Electricas', 'Guitarras Electricas'), ('Guitarras Acusticas', 'Guitarras Acusticas'), ('Bajos', 'Bajos')], max_length=45),
+>>>>>>> 2a023c397cf5ca732e4d5412cb63d598acccaf63
         ),
     ]
